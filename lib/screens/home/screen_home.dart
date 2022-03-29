@@ -9,20 +9,35 @@ class ScreenHome extends StatelessWidget {
   static ValueNotifier<int> selectedIndexnotifier = ValueNotifier(0);
 
   final pages = const [
-    ScreenCategory(),
     ScreenTransaction(),
+    ScreenCategory(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child:ValueListenableBuilder(
+      backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+        title: Center(child: const Text('Xpens')),
+      ),
+      body: SafeArea(
+          child: ValueListenableBuilder(
         valueListenable: selectedIndexnotifier,
-        builder: (BuildContext context, int updatedindex, Widget? _){
+        builder: (BuildContext context, int updatedindex, Widget? _) {
           return pages[updatedindex];
         },
       )),
       bottomNavigationBar: XpensBottomNavigation(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (selectedIndexnotifier.value == 0) {
+            print("transaction");
+          } else {
+            print("category");
+          }
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
