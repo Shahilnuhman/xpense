@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xpens/database/category/category_db.dart';
 import 'package:xpens/screens/category/expenseCategory.dart';
 import 'package:xpens/screens/category/incomeCtegory.dart';
 
@@ -16,6 +17,11 @@ class _ScreenCategoryState extends State<ScreenCategory> with SingleTickerProvid
   @override
   void initState() {
    
+   CategoryDb().getCategories().then((value) {
+     print(" category get");
+     print(value.toString());
+   });
+     
     _tabController = TabController(length: 2, vsync: this);
   }
   @override

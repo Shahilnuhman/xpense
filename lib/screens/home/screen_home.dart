@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:xpens/database/category/category_db.dart';
+import 'package:xpens/models/category/category_model.dart';
+import 'package:xpens/screens/category/category_add_pop.dart';
 import 'package:xpens/screens/category/screen_category.dart';
 import 'package:xpens/screens/home/widgets/bottom_navigation.dart';
 import 'package:xpens/screens/transaction/screen_transaction.dart';
@@ -33,7 +36,13 @@ class ScreenHome extends StatelessWidget {
           if (selectedIndexnotifier.value == 0) {
             print("transaction");
           } else {
-            print("category");
+            showCategoryAddPopup(context);
+            // final _sampledata = CategoryModel(
+            //   id: DateTime.now().millisecondsSinceEpoch.toString(),
+            //   name: 'travel',
+            //   type: Categorytype.expense,
+            // );
+            // CategoryDb().insertCategory(_sampledata);
           }
         },
         child: const Icon(Icons.add),

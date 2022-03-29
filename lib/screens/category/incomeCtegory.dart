@@ -11,11 +11,14 @@ class incomeCategory extends StatelessWidget {
       itemCount: 10,
       padding: const EdgeInsets.all(8),
       itemBuilder: (context, index) {
-        return const Card(
+        return Card(
           child: ListTile(
-           
             title: Text('15000'),
             subtitle: Text("income"),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.delete),
+            ),
           ),
         );
       },
